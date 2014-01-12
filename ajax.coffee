@@ -86,7 +86,7 @@ define [
 
         flatOptions = jQuery.ajaxSettings.flatOptions or {}
 
-        for key in src
+        for key of src
             if key isnt undefined
                 ( if flatOptions[key] then target else ( deep or (deep = {} ) ) )[key] = src[key]
 
