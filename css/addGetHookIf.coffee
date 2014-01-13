@@ -4,12 +4,11 @@ define ->
 
         return {
             get: ->
-                if conditionFn()
-                    delete this.get
+                delete @get if conditionFn()
 
-                    return
+                return
 
-                (this.get = hookFn).apply this, arguments
+                (@get = hookFn).apply this, arguments
         }
 
     addGetHookIf
