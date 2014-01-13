@@ -339,7 +339,7 @@ define [
 
         toggle: (state) ->
             if typeof state is 'boolean'
-               return if state then @show else @hide
+               return if state then @show() else @hide()
 
             @each ->
                 if isHidden this
