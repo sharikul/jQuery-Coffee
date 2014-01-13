@@ -4,8 +4,8 @@ define ->
 
         return {
             get: ->
+                
                 delete @get if conditionFn()
-
 
             (@get = hookFn).apply this, arguments
         }
