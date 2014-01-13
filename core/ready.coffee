@@ -35,7 +35,7 @@ define [
             readyList.resolveWith document, [jQuery]
 
             if jQuery.fn.trigger
-                jQuery(document).trigger('ready').off('ready')
+                jQuery(document).trigger('ready').off 'ready'
 
     completed = ->
         document.removeEventListener 'DOMContentLoaded', completed, false

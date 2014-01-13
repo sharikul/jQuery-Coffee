@@ -66,7 +66,7 @@ define [
 
             return jQuery.makeArray selector, this
 
-    init.prototype = jQuery.fn
+    init:: = jQuery.fn
 
     rootjQuery = jQuery document
 

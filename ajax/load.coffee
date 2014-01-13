@@ -11,14 +11,14 @@ define [
 
     _load = jQuery.fn.load
 
-    jQuery.fn.load = (url, params, callback) ->
+    jQuery.fn.load = (url, params, callback) =>
 
         if typeof url isnt 'string' and _load
             _load.apply this, arguments
 
         selector = type = response = undefined
 
-        # self = this is only being written here as it's written like this in the jQuery source. CoffeeScript's @ notation will be used to denote 'this' elsewhere in this script
+        # self = this is only being written here for representational purposes. CoffeeScript's binding method will be used instead.
         self = this
 
         # off is a reserved term in CoffeeScript which compiles into 'false', which will lead to errors, thus placing an underscore before it solves errors.

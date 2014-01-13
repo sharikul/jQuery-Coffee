@@ -34,9 +34,8 @@ define [
                         bulk.call jQuery(elem), value
 
             if fn
-                while i < len
+                for i of elems
                     fn elems[i], key, (if raw then value else value.call(elems[i], i, fn(elems[i], key)))
-                    i++
 
             return if chainable then elems else if bulk then fn.call(elems) else if len then fn(elems[0], key) else emptyGet
             

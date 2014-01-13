@@ -315,11 +315,11 @@ define [
 
                             match = responseHeaders[ key.toLowerCase() ]
                         
-                        return if match is null then null else match
+                        if match is null then null else match
 
 
                     getAllResponseHeaders: ->
-                        return if state is 2 then responseHeadersString else null
+                        if state is 2 then responseHeadersString else null
 
                     setRequestHeader: (name, value) ->
                         lname = name.toLowerCase()
