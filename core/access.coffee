@@ -19,7 +19,7 @@ define [
         else if value isnt undefined
             chainable = true
 
-            if !jQuery.isFunction value
+            if not jQuery.isFunction value
                 raw = true
 
             if bulk

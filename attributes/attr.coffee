@@ -77,7 +77,7 @@ define [
             type:
                 set: (elem, value) ->
 
-                    if !support.radioValue and value is 'radio' and jQuery.nodeType elem, 'input'
+                    if not support.radioValue and value is 'radio' and jQuery.nodeType elem, 'input'
                         val = elem.value
 
                         elem.setAttribute 'type', value
@@ -103,7 +103,7 @@ define [
         attrHandle[name] = (elem, name, isXML) ->
             ret = handle = undefined
 
-            if !isXML
+            if not isXML
                 handle = attrHandle[name]
 
                 attrHandle[name] = ret

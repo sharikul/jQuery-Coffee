@@ -7,7 +7,7 @@ define [
 
     jQuery.parseHTML = (data, context, keepScripts) ->
 
-        if !data or typeof data isnt 'string'
+        if not data or typeof data isnt 'string'
             return null
 
         if typeof context is 'boolean'

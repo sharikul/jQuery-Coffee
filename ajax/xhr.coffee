@@ -52,7 +52,7 @@ define [
                     if options.mimeType and xhr.overrideMimeType
                         xhr.overrideMimeType options.mimeType
 
-                    if !options.crossDomain and !headers['X-Requested-With']
+                    if not options.crossDomain and !headers['X-Requested-With']
                         headers['X-Requested-With'] = 'XMLHttpRequest'
 
                     for i of headers

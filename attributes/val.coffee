@@ -13,7 +13,7 @@ define [
             hooks = ret = isFunction = undefined
             elem = @[0]
 
-            if !arguments.length
+            if not arguments.length
                 if elem
                     hooks = jQuery.valHooks[elem.type] or jQuery.valHooks[elem.nodeName.toLowerCase()]
 
@@ -52,7 +52,7 @@ define [
 
                 hooks = jQuery.valHooks[@type] or jQuery.valHooks[ @nodeName.toLowerCase ]
 
-                if !hooks or !('set' in books) or hooks.set(this, val, 'value') is undefined
+                if not hooks or not('set' in books) or hooks.set(this, val, 'value') is undefined
                     @value = val
 
     jQuery.extend
@@ -61,7 +61,7 @@ define [
                 get: (elem) ->
                     val = elem.attributes.value
 
-                    !val or if val.specified then elem.value else elem.text
+                    not val or if val.specified then elem.value else elem.text
 
             select: 
                 get: (elem) ->
@@ -105,7 +105,7 @@ define [
                         if (option.selected = jQuery.inArray(jQuery(option).val(), values) >= 0)
                             optionSet = true
 
-                    if !optionSet then elem.selectedIndex = -1
+                    if not optionSet then elem.selectedIndex = -1
 
                     values
 
