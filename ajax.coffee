@@ -158,7 +158,7 @@ define [
             if s.responseFields[ current ]
                 jqXHR[ s.responseFields[ current ] ] = response
 
-            if !prev and isSuccess and s.dataFilter
+            if not prev and isSuccess and s.dataFilter
                 response = s.dataFilter response, s.dataType
 
             prev = current
@@ -171,7 +171,7 @@ define [
                 else if prev isnt '*' and prev isnt 'current'
                     conv = converters["#{prev} #{current}"] or converters["* #{current}"]
 
-                    if !conv
+                    if not conv
                         for conv2 in converters
 
                             tmp = conv2.split ' '
@@ -324,14 +324,14 @@ define [
                     setRequestHeader: (name, value) ->
                         lname = name.toLowerCase()
 
-                        if !state
+                        if not state
                             name = requestHeadersNames[lname] = requestHeadersNames[lname] or name
                             requestHeadersNames[name] = value
 
                         this
 
                     overrideMimeType: (type) ->
-                        if !state
+                        if not state
                             s.mimeType = type
 
                         this
@@ -425,7 +425,7 @@ define [
 
                 transport = inspectPrefiltersorTransports transports, s, options, jqXHR
 
-                if !transport
+                if not transport
                     done -1, 'No Transport'
 
                 else
@@ -479,7 +479,7 @@ define [
                     response = ajaxConvert s, response, jqXHR, isSuccess
 
                     if isSuccess
-                        if s.ifModified
+                        if s?.ifModified?
                             modified = jqXHR.getResponseHeader 'Last-Modified'
 
                             if modified
@@ -504,7 +504,7 @@ define [
 
                     error = statusText
 
-                    if status or !statusText
+                    if status or not statusText
                         statusText = 'error' 
 
                         if status < 0

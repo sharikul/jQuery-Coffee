@@ -12,7 +12,7 @@ define [
     init = jQuery.fn.init = (selector, context) ->
         match = elem = undefined
 
-        if !selector
+        if not selector
             return this
 
         if typeof selector is 'string'
@@ -43,7 +43,7 @@ define [
                 else
                     elem = document.getElementById match[2]
 
-                    if elem and elem.parentNode
+                    if elem?.parentNode?
                         @length = 1
                         @[0] = elem
 

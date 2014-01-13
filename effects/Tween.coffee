@@ -31,7 +31,7 @@ define [
 
             hooks = Tween.propHooks[@prop]
 
-            if @options.duration
+            if @options?.duration?
                 @pos = eased = jQuery.easing[@easing] percent, @options.duration * percent, 0, 1, @options.duration
 
             else
@@ -39,10 +39,10 @@ define [
 
             @now = ( @end - @start ) * eased + @start
 
-            if @options.step
+            if @options?.step?
                 @options.step.call @elem, @now, this
 
-            if hooks and hooks.set
+            if hooks?.set?
                 hooks.set this
 
             else

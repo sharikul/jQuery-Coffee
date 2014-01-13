@@ -46,12 +46,12 @@ define [
                 get: (elem) ->
                     if elem.hasAttribute('tabIndex') or rfocusable.test(elem.nodeName) or elem.href then elem.tabIndex else -1
 
-    if !support.optSelected
+    if not support.optSelected
         jQuery.propHooks.selected = 
             get: (elem) ->
                 parent = elem.parentNode
 
-                if parent and parent.parentNode
+                if parent?.parentNode?
                     parent.parentNode.selectedIndex
 
                 null

@@ -44,7 +44,7 @@ define [
         jQuery.ready()
 
     jQuery.ready.promise = (obj) ->
-        if !readyList
+        if not readyList
             readyList = jQuery.Deferred()
 
             if document.readyState is 'complete'

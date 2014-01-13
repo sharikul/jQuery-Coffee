@@ -42,7 +42,7 @@ define [
                 if value is null
                     jQuery.removeAttr elem, name
 
-                else if hooks and 'get' in hooks and ( ret = hooks.get elem, name) isnt undefined
+                else if hooks and 'get' in hooks and (ret = hooks.get elem, name) isnt undefined
                     return ret
 
                 else

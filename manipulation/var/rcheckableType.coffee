@@ -1,0 +1,2 @@
+define ->
+    (/^(?:checkbox|radio)$/i)

@@ -1,0 +1,2 @@
+define ->
+    typeof undefined

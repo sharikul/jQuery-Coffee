@@ -7,7 +7,7 @@ define [
 
         xml = tmp = undefined
 
-        if !data or typeof data isnt 'string'
+        if not data or typeof data isnt 'string'
             return null
 
         try
@@ -17,7 +17,7 @@ define [
             xml = undefined
 
 
-        if !xml or xml.getElementsByTagName('parsererror').length
+        if not xml or xml.getElementsByTagName('parsererror').length
             jQuery.error "Invalid XML: #{data}"
 
         xml
