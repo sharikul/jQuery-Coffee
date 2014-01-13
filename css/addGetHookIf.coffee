@@ -6,9 +6,8 @@ define ->
             get: ->
                 delete @get if conditionFn()
 
-                return
 
-                (@get = hookFn).apply this, arguments
+            (@get = hookFn).apply this, arguments
         }
 
     addGetHookIf
