@@ -16,7 +16,7 @@ define [
 
     version = '@VERSION'
 
-    jQuery = (selector, context) ->
+    jQuery = (selector, context = document) ->
         new jQuery.fn.init selector, context
 
     rmsPrefix = /^-ms-/
