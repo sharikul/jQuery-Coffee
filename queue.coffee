@@ -94,5 +94,32 @@ define [
     promise: (type, obj) ->
       
       tmp = undefined
+      count = 1
+      defer = jQuery.Deferred()
       
+      elements = this
+      i = @length
+      resolve = ->
+        if not (--count)
+          defer.resolveWith elements, [elements]
+        
+     
+     if typeof type isnt 'string'
+      obj = type
+      type = undefined
+    
+     type = type or 'fx'
+     
+     while i--
+      tmp = data_priv.get elements[i], "#{type}queueHooks"
+      
+      if tmp?.empty
+        count++
+        tmp.empty.add resolve
+        
+     resolve()
+     
+     defer.promise obj
+  
+  jQuery
       
