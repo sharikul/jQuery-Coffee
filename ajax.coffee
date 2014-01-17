@@ -63,7 +63,7 @@ define [
 
         inspect = (dataType) ->
             selected = undefined
-            inspected[ dataType ] = true
+            inspected[ dataType ] = yes
 
             jQuery.each structure[ dataType ] or [], (_, prefilterOrFactory ) ->
                 dataTypeOrTransport = prefilterOrFactory options, originalOptions, jqXHR
@@ -91,7 +91,7 @@ define [
                 ( if flatOptions[key] then target else ( deep or (deep = {} ) ) )[key] = src[key]
 
         if deep
-            jQuery.extend true, target, deep
+            jQuery.extend yes, target, deep
 
 
         target
@@ -180,15 +180,15 @@ define [
                                 conv = converters["#{prev} #{tmp[0]}"] or converters["* #{tmp[0]}"]
 
                                 if conv
-                                    if conv is true
+                                    if conv is yes
                                         conv = converters[ conv2 ]
 
-                                    else if converters[ conv2 ] isnt true
+                                    else if converters[ conv2 ] isnt yes
                                         current = tmp[0]
                                         dataTypes.unshift tmp[1]
                                     break
 
-                    if conv isnt true
+                    if conv isnt yes
                         if conv and s['throws']
                             response = conv response
 
@@ -216,9 +216,9 @@ define [
             url: ajaxLocation
             type: 'GET'
             isLocal: rlocalProtocal.test ajaxLocParts[1]
-            global: true
-            processData: true
-            async: true
+            global: yes
+            processData: yes
+            async: yes
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
 
             ###
@@ -228,8 +228,8 @@ define [
              username: null,
              password: null,
              cache: null,
-             throws: false,
-             traditional: false,
+             throws: no,
+             traditional: no,
              headers: {},
             ###
 
@@ -252,13 +252,13 @@ define [
 
             converters:
                 '* text': String 
-                'text html': true
+                'text html': yes
                 'text json': jQuery.parseJSON
                 'text xml': jQuery.parseXML
 
             flatOptions:
-                url: true
-                context: true
+                url: yes
+                context: yes
 
             ajaxSetup: (target, settings) ->
                 return if settings then ajaxExtend ajaxExtend(target, jQuery.ajaxSettings), settings else ajaxExtend jQuery.ajaxSettings, target
@@ -396,7 +396,7 @@ define [
 
                         delete s.data
 
-                    if s.cache is false
+                    if s.cache is no
                         s.url = if rts.test( cacheURL ) then cacheURL.replace(rts, "$1_=#{nonce++}") else cacheURL + (if rquery.test(cacheURL) then '&' else '?') + "_=#{nonce++}"
 
                 if s.ifModified
@@ -407,7 +407,7 @@ define [
                         jqXHR.setRequestHeader 'If-None-Match', jQuery.etag[cacheURL]
 
 
-                if s.data and s.hasContent and s.contentType isnt false or options.contentType
+                if s.data and s.hasContent and s.contentType isnt no or options.contentType
                     jqXHR.setRequestHeader 'Content-Type', s.contentType
 
                 jqXHR.setRequestHeader 'Accept', if s.dataTypes[0] and s.accepts[ s.dataTypes[0] ] then s.accepts[ s.dataTypes[0] ] + ( if s.dataTypes[0] isnt '*' then ", #{allTypes}; q=0.01" else '') else s.accepts['*']
@@ -415,7 +415,7 @@ define [
                 for i in s.headers
                     jqXHR.setRequestHeader i, s.headers[i]
 
-                if s.beforeSend and ( s.beforeSend.call(callbackContext, jqXHR, s) ) is false or state is 2
+                if s.beforeSend and ( s.beforeSend.call(callbackContext, jqXHR, s) ) is no or state is 2
                     return jqXHR.abort()
 
                 strAbort = 'abort'

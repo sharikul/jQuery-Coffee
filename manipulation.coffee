@@ -361,3 +361,116 @@ define [
                 @empty.append(value) if elem
 
             , null, value, arguments.length
+
+
+        replaceWith: ->
+            arg = arguments[0]
+
+            @domManip arguments, (elem) ->
+                arg = @parentNode
+
+                jQuery.cleanData getAll this
+
+                arg.replaceChild(elem, this) if arg
+
+
+            if (arg?.length or arg?.nodeType) then this else @remove
+
+
+        detach: (selector) ->
+            @remove selector, yes
+
+
+        domManip: (args, callback) ->
+
+            args = concat.apply [], args
+
+            fragment = first = scripts = hasScripts = node = doc = undefined
+
+            i = 0
+            l = @length
+            set = this
+            iNoClone = l - 1
+            value = args[0]
+            isFunction = jQuery.isFunction value
+
+            if isFunction or (l > 1 and typeof value is 'string' and not support.checkClone and rchecked.test value)
+
+                @each (index) ->
+                    self = set.eq index
+
+                    if isFunction
+                        args[0] = value.call this, index, self.html()
+
+                    self.domManip args, callback
+
+            if l
+                fragment = jQuery.buildFragment args, @[0].ownerDocument, no, this
+
+                first = fragment.firstChild
+
+                fragment = first if fragment.childNodes.length is 1
+
+                if first
+                    scripts = jQuery.map getAll(fragment, 'script'), disableScript
+                    hasScripts = scripts.length
+
+                    while i < l
+                        if i isnt iNoClone
+                            node = jQuery.clone node, true, true
+
+                            jQuery.merge(scripts, getAll(node, 'script')) if hasScripts
+
+                        callback.call this[i], node, i
+
+                        i++
+
+                    if hasScripts
+                        doc = scripts[scripts.length - 1].ownerDocument
+
+                        jQuery.map scripts, restoreScript
+
+                        while i < hasScripts
+                            node = scripts[i]
+
+                            if rscriptType.test(node.type or '') and not data_priv.access(node, 'globalEval') and jQuery.contains doc, node
+
+                                if node.src
+                                    if jQuery._evalUrl
+                                        jQuery._evalUrl node.src
+
+                                else
+                                    jQuery.globalEval node.textContent.replace rcleanScript, ''
+
+            this
+
+    jQuery.each
+        appendTo: 'append'
+        prependTo: 'prepend'
+        insertBefore: 'before'
+        insertAfter: 'after'
+        replaceAll: 'replaceWith'
+
+    , (name, original) ->
+
+        jQuery.fn[name] = (selector) ->
+
+            elems = undefined
+
+            ret = []
+
+            insert = jQuery selector
+            last = insert.length - 1
+            i = 0
+
+            while i <= last
+                elems = if i is last then this else @clone true
+                jQuery( insert[i] )[ original ] elems
+
+                push.apply ret, elems.get()
+
+                i++
+
+            @pushStack ret
+
+    jQuery

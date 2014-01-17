@@ -10,7 +10,7 @@ define [
         object = optionsCache[ options ] = {}
 
         jQuery.each options.match( rnotwhite ) or [], (_, flag) ->
-            object[ flag ] = true
+            object[ flag ] = yes
 
         object
 
@@ -27,20 +27,20 @@ define [
 
         fire = (data) ->
             memory = options.memory and data
-            fired = true
+            fired = yes
 
             firingIndex = firingStart or 0
             firingStart = 0
             firingLength = list.length
 
-            firing = true
+            firing = yes
 
             for firingIndex in list
-                if list[ firingIndex ].apply(data[0], data[1]) is false and options.stopOnFalse
-                    memory = false
+                if list[ firingIndex ].apply(data[0], data[1]) is no and options.stopOnFalse
+                    memory = no
                     break
 
-            firing = false
+            firing = no
 
             if list
                 if stack
