@@ -99,27 +99,28 @@ define [
       
       elements = this
       i = @length
+
       resolve = ->
         if not (--count)
           defer.resolveWith elements, [elements]
         
      
-     if typeof type isnt 'string'
-      obj = type
-      type = undefined
+      if typeof type isnt 'string'
+        obj = type
+        type = undefined
     
-     type = type or 'fx'
+      type = type or 'fx'
      
-     while i--
-      tmp = data_priv.get elements[i], "#{type}queueHooks"
+      while i--
+        tmp = data_priv.get elements[i], "#{type}queueHooks"
       
-      if tmp?.empty
-        count++
-        tmp.empty.add resolve
+        if tmp?.empty
+          count++
+          tmp.empty.add resolve
         
-     resolve()
+      resolve()
      
-     defer.promise obj
+      defer.promise obj
   
   jQuery
       
