@@ -3,4 +3,4 @@ define [
 
 ], (pnum) ->
 
-    new RegExp "^(#{pnum})(?!px)[a-z%]+$/i"
+    new RegExp "^(#{pnum})(?!px)[a-z%]+$/", 'i'
