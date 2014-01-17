@@ -25,8 +25,8 @@ define [
         _off = url.indexOf ' '
 
         if _off >= 0
-            selector = url.slice off
-            url = url.slice 0, off
+            selector = url.slice no
+            url = url.slice 0, no
 
         if jQuery.isFunction params
             callback = params

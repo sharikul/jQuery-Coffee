@@ -14,7 +14,7 @@ define [
 
         jsonpCallback: ->
             callback = oldCallbacks.pop() or ("#{jQuery.expando}_#{nonce++}")
-            @[callback] = true
+            @[callback] = yes
 
             callback
 
@@ -22,7 +22,7 @@ define [
 
         callbackName = overwritten = responseContainer = undefined
 
-        jsonProp = if s.jsonp isnt false and ( rjsonp.test s.url ) then 'url' else typeof s.data is 'string' and !(s.contentType or '').indexOf('application/x-www-form-urlencoded') and 'data'
+        jsonProp = if s.jsonp isnt no and ( rjsonp.test s.url ) then 'url' else typeof s.data is 'string' and !(s.contentType or '').indexOf('application/x-www-form-urlencoded') and 'data'
 
         if jsonProp or s.dataTypes[0] is 'jsonp'
             callbackName = if s.jsonpCallback = jQuery.isFunction s.jsonpCallback then s.jsonpCallback() else s.jsonpCallback
@@ -30,7 +30,7 @@ define [
             if jsonProp
                 s[ jsonProp ] = s[ jsonProp ].replace rjsonp, "$1#{callbackName}"
 
-            else if s.jsonp isnt false
+            else if s.jsonp isnt no
                 s.url += ( if rquery.test s.url then '&' else '?') + "#{s.jsonp}=#{callbackName}"
 
             s.converters['script json'] = ->

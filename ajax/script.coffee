@@ -20,7 +20,7 @@ define [
     jQuery.ajaxPrefilter 'script', (s) ->
 
         if s.cache is undefined
-            s.cache = false
+            s.cache = off
 
         if s.crossDomain
             s.type = 'GET'
@@ -36,7 +36,7 @@ define [
 
                     script = jQuery('<script>').prop(
 
-                        async: true
+                        async: yes
                         charset: s.scriptCharset
                         src: s.url
 
