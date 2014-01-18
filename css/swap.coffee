@@ -14,9 +14,8 @@ define [
             elem.style[name] = options[name]
 
         ret = callback.apply elem, args or []
-
-        for name of options
-            elem.style[name] = old[name]
+        
+        elem.style[name] = old[name] for name of options
 
         ret
 
