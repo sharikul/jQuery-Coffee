@@ -23,7 +23,7 @@ define [
 
         list = []
 
-        stack = !options.once and []
+        stack = not options.once and []
 
         fire = (data) ->
             memory = options.memory and data
@@ -110,18 +110,17 @@ define [
                 this
 
             disabled: ->
-                !list
+                not list
 
             lock: ->
                 stack = undefined
-
-                if !memory
-                    self.disable()
+                
+                self.disable() if not memory
 
                 this
 
             locked: ->
-                !stack
+                not stack
 
             fireWith: (context, args) ->
                 if list and ( !fired or stack )
