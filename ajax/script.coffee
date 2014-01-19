@@ -54,5 +54,5 @@ define [
                     document.head.appendChild script[0]
 
                 abort: ->
-                        callback() if callback
+                    callback() if callback
             }
