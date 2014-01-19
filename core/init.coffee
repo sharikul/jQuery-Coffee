@@ -12,8 +12,7 @@ define [
     init = jQuery.fn.init = (selector, context) ->
         match = elem = undefined
 
-        if not selector
-            return this
+        return this if not selector
 
         if typeof selector is 'string'
             if selector[0] is '<' and selector[selector.length - 1] is '>' and selector.length >= 3
@@ -23,7 +22,7 @@ define [
                 match = rquickExpr.exec selector
 
 
-            if match and (match[1] or !context)
+            if match and (match[1] or not context)
                 if match[1]
                     context = if context instanceof jQuery then context[0] else context
 
