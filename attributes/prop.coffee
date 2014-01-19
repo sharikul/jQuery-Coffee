@@ -26,8 +26,7 @@ define [
 
             nType = elem.nodeType
 
-            if !elem or nType is 3 or nType is 8 or nType is 2
-                return
+            return no if not elem or nType is 3 or nType is 8 or nType is 2
 
             notxml = nType isnt 1 or !jQuery.isXMLDoc elem
 
@@ -51,8 +50,7 @@ define [
             get: (elem) ->
                 parent = elem.parentNode
 
-                if parent?.parentNode?
-                    parent.parentNode.selectedIndex
+                parent.parentNode.selectedIndex if parent?.parentNode?
 
                 null
 
