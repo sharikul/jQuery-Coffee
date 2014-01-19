@@ -16,7 +16,7 @@ define [
         support.optSelected = opt.selected
 
         select.disabled = true
-        support.optDisabled = !opt.disabled
+        support.optDisabled = not opt.disabled
 
         input = document.createElement 'input'
         input.value = 't'
