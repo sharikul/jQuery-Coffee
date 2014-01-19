@@ -40,8 +40,7 @@ define [
 
                         finalValue = jQuery.trim cur
 
-                        if elem.className isnt finalValue
-                            elem.className = finalValue
+                        elem.className = finalValue if elem.className isnt finalValue
 
             this
 
@@ -75,8 +74,7 @@ define [
 
                         finalValue = if value then jQuery.trim cur else ''
 
-                        if elem.className isnt finalValue
-                            elem.className = finalValue
+                        elem.className = finalValue if elem.className isnt finalValue
 
             this
 
