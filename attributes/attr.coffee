@@ -26,8 +26,7 @@ define [
 
             nType = elem.nodeType
 
-            if !elem or nType is 3 or nType is 8 or nType is 2
-                return
+            return if not elem or nType is 3 or nType is 8 or nType is 2
 
             if typeof elem.getAttribute is strundefined
                 jQuery.prop elem, name, value
@@ -68,8 +67,7 @@ define [
                 while (name = attrNames[i++])
                     propName = jQuery.propFix[name] or name
 
-                    if jQuery.expr.match.bool.test name
-                        elem[propName] = false
+                    elem[propName] = false if jQuery.expr.match.bool.test name
 
                     elem.removeAttribute name
 
@@ -82,8 +80,7 @@ define [
 
                         elem.setAttribute 'type', value
 
-                        if val
-                            elem.value = val
+                        elem.value = val if val
 
                         value
 
