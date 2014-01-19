@@ -18,8 +18,7 @@ define [
     Data.prototype = 
 
         key: (owner) ->
-            if not Data.accepts owner
-                return 0
+            return 0 if not Data.accepts owner
 
             descriptor = {}
             unlock = owner[@expando]
@@ -53,8 +52,7 @@ define [
                     jQuery.extend @cache[unlock], data
                 
                 else
-                    for prop of data
-                        cache[prop] = data[prop]
+                    cache[prop] = data[prop] for prop of data
 
             cache
 
