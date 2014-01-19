@@ -22,7 +22,8 @@ define [
 
         callbackName = overwritten = responseContainer = undefined
 
-        jsonProp = if s.jsonp isnt no and ( rjsonp.test s.url ) then 'url' else typeof s.data is 'string' and !(s.contentType or '').indexOf('application/x-www-form-urlencoded') and 'data'
+        jsonProp = if s.jsonp isnt no and ( rjsonp.test s.url ) 
+        then 'url' else typeof s.data is 'string' and not (s.contentType or '').indexOf('application/x-www-form-urlencoded') and 'data'
 
         if jsonProp or s.dataTypes[0] is 'jsonp'
             callbackName = if s.jsonpCallback = jQuery.isFunction s.jsonpCallback then s.jsonpCallback() else s.jsonpCallback
@@ -34,7 +35,7 @@ define [
                 s.url += ( if rquery.test s.url then '&' else '?') + "#{s.jsonp}=#{callbackName}"
 
             s.converters['script json'] = ->
-                if !responseContainer
+                if not responseContainer
                     jQuery.error "#{callbackName} was not called"
 
                 responseContainer[0]
