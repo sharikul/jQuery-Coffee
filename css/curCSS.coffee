@@ -14,8 +14,7 @@ define [
 
         computed = computed or getStyles elem
 
-        if computed
-            ret = computed.getPropertyValue(name) or computed[name]
+        ret = computed.getPropertyValue(name) or computed[name] if computed
 
         if computed
             if ret is '' and not jQuery.contains elem.ownerDocument, elem
