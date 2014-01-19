@@ -33,8 +33,7 @@ define [
                     descriptor[@expando] = unlock
                     jQuery.extend owner, descriptor
 
-            if not @cache[unlock]
-                @cache[unlock] = {}
+            @cache[unlock] = {} if not @cache[unlock]
 
             unlock
 
